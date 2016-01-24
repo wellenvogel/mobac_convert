@@ -23,7 +23,7 @@
 #  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 #  DEALINGS IN THE SOFTWARE.
 ###############################################################################
-VERSION="1.0.1"
+VERSION="1.0.2"
 import os
 import sys
 import logging
