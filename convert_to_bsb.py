@@ -205,7 +205,7 @@ def main(argv):
   logging.basicConfig(level=logging.DEBUG if options.verbose==2 else 
       (logging.ERROR if options.verbose==0 else logging.INFO))
   if (len(args) < 1):
-    print usage
+    print(usage)
     sys.exit(1)
   log("%s version %s"%(sys.argv[0],VERSION))
   if not hasGDAL == 1 and not options.nogdal==1:
