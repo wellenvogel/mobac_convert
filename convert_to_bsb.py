@@ -152,6 +152,11 @@ def convertChartListDirect(chartlist):
       continue
     (h,png,d1,il,it,pixelw,pixelh)=struct.unpack('!B3s4sI4sII',buf)
     f.close()
+    #python 3 decodes s to bytes...
+    if type(png) == bytes:
+      png=png.decode()
+    if type(it) == bytes:
+      it=it.decode()
     if png != "PNG" or it != "IHDR":
       warn("invalid png header for "+chart+" ignore this one")
       continue
