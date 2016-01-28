@@ -23,7 +23,7 @@
 #  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 #  DEALINGS IN THE SOFTWARE.
 ###############################################################################
-VERSION="1.0.3"
+VERSION="1.0.4"
 import os
 import sys
 import logging
@@ -117,6 +117,9 @@ def convertChartListGDAL(chartlist):
       continue
     llosr.CopyGeogCSFrom(inosr)
     transformer=osr.CoordinateTransformation(inosr,llosr)
+    if transformer.this is None:
+      warn(chart+" seems not to have a coordinate system, cannot transform (potentially missing some files)")
+      continue
     geotr=dataset.GetGeoTransform()
     (ullon,ullat,z)=transformer.TransformPoint(geotr[0],geotr[3],0)
     (lrlon,lrlat)=gdal.ApplyGeoTransform(geotr,dataset.RasterXSize,dataset.RasterYSize)
