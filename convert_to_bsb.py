@@ -95,6 +95,14 @@ def readCharts(args, whitelist):
     else:
       warn("file/dir "+arg+" not found")
   return chartlist
+
+def imgkap():
+   sysname, nodename, release, version, machine = os.uname()
+   if sysname == "Linux":
+      return "imgkap"
+   else:
+      return "imgkap.exe"
+   
   
 #------------------------------------
 def convertChartListGDAL(chartlist):
@@ -125,7 +133,7 @@ def convertChartListGDAL(chartlist):
     (lrlon,lrlat)=gdal.ApplyGeoTransform(geotr,dataset.RasterXSize,dataset.RasterYSize)
     log("raster: ullat=%f ullon=%f lrlat=%f lrlon=%f"% (geotr[3],geotr[0],lrlat,lrlon))
     (lrlon,lrlat,z)=transformer.TransformPoint(lrlon,lrlat,0)
-    cmd="imgkap.exe %s %f %f %f %f"% (chart,ullat,ullon,lrlat,lrlon)
+    cmd="%s %s %f %f %f %f"% (imgkap(),chart,ullat,ullon,lrlat,lrlon)
     log("running "+cmd)
     os.system(cmd)
 
