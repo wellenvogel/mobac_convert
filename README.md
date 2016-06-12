@@ -27,3 +27,14 @@ http://www.dacust.com/inlandwaters/imgkap/
 3. the python script
 
 You can find the script also at http://www.wellenvogel.net/software/bsb_from_moac/index.php
+
+4. On Linux Systems you need to compile imgkap by your own - but this is easy (Thanks to Oleg for his description)
+sudo aptitude install git gcc python-gdal libfreeimage-dev
+git clone https://github.com/nohal/imgkap.git
+cd imgkap
+make 
+cd ..
+git clone https://github.com/wellenvogel/mobac_convert
+cd mobac_convert
+PATH=$PATH:../imgkap ./convert_to_bsb.py /path/to/mobac_png_charts
+
