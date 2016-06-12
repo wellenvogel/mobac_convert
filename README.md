@@ -40,7 +40,7 @@ make
 
 cd ..
 
-git clone https://github.com/wellenvogel/mobac_convert
+git clone https://github.com/wellenvogel/mobac_convert.git
 
 cd mobac_convert
 
