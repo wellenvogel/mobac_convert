@@ -198,7 +198,7 @@ def convertChartListDirect(chartlist):
     log(chart+" raster: ullat=%f ullon=%f lrlat=%f lrlon=%f"% (uly,ulx,lry,lrx))
     (ullon,ullat)=metersToLonLat(ulx, uly)
     (lrlon,lrlat)=metersToLonLat(lrx, lry)
-    cmd="imgkap.exe %s %f %f %f %f"% (chart,ullat,ullon,lrlat,lrlon)
+    cmd="%s %s %f %f %f %f"% (imgkap(),chart,ullat,ullon,lrlat,lrlon)
     log("running "+cmd)
     os.system(cmd)
       
